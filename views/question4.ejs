@@ -1,0 +1,59 @@
+<%- include header %>
+<%- include sider %>
+<div class="wid question-test clear">
+<h4>中医体质辨识问卷 第三步：填写个人体质情况（共4步）（共4步）</h4>
+<form class="question2-form" method="POST" name="question1">
+<input type="hidden" name="name" value="<%= user.name %>"/>	
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "A"){ %>
+	<%- include question4-A %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "B"){ %>
+	<%- include question4-B %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "C"){ %>
+	<%- include question4-C %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "D"){ %>
+	<%- include question4-D %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "E"){ %>
+	<%- include question4-E %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "F"){ %>
+	<%- include question4-F %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "G"){ %>
+	<%- include question4-G %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "H"){ %>
+	<%- include question4-H %>
+	<% }%>	
+<% }%>
+<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+	<% if(questionthree.tizhi[i] == "I"){ %>
+	<%- include question4-I %>
+	<% }%>	
+<% }%>
+    <div class="text-center">
+    <button class="btn btn-primary btn-sm btn-back" onclick="javasrcipt:history.go(-1)"><span class="glyphicon glyphicon-step-backward"></span>上一步</button>
+    <button class="btn btn-primary btn-sm btn-next" type="submit"><span class="glyphicon glyphicon-step-forward"></span>下一步</button>
+    </div>  
+</form>
+
+</div>
+<%- include footer %>

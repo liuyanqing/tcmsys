@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0"/>
+<title><%= title %></title>
+<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+<link rel="stylesheet" href="/js/lib/skin/blue.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+<script type="text/javascript" src="/js/lib/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="/js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/lib/icheck.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body class="clear">
+<header>
+<h1>中医体质辨识系统</h1>
+<div class="nav-top">
+<ul class="list-inline">
+<% if (user) { %>
+  <li><a title="logout" href="/logout"><span class="glyphicon glyphicon-log-out"></span>登出</a></li>
+  <li><a title="help" href="/help"><span class="glyphicon glyphicon-question-sign"></span>帮助</a></li>
+<% } else { %>
+  <li><a title="注册" href="/reg"><span class="glyphicon glyphicon-registration-mark"></span>注册</a></li>
+  <li><a title="登录" href="/login"><span class="glyphicon glyphicon-log-in"></span>登录</a></li>
+<% } %>
+</ul>
+</div>
+</header>
+<% if (success) { %>
+		  <div class="alert alert-success alert-dismissable"> <button type="button" class="close" data-dismiss="alert"
+		   aria-hidden="true">
+		      &times;
+		   </button><%= success %></div>
+<% } %>
+

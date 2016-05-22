@@ -1,0 +1,159 @@
+<%- include header %>
+<%- include sider %>
+<div class="wid question-test clear">
+<h4>中医体质辨识问卷 第一步：填写个人信息（2）（共4步）</h4>
+<form class="question2-form" method="POST" name="question1">
+<input type="hidden" name="name" value="<%= user.name %>"/>
+	<div class="row">
+	    <label class="col-sm-2 control-label">舌质：</label>
+	    <div class="col-sm-10 form-group">
+	      <input type="checkbox" name="shezhi" value="淡白">淡白
+	       <input type="checkbox" name="shezhi" value="暗红">暗红
+	       <input type="checkbox" name="shezhi" value="淡红">淡红
+		   <input type="checkbox" name="shezhi" value="瘦">瘦
+	       <input type="checkbox" name="shezhi" value="边有齿痕">边有齿痕
+	       <input type="checkbox" name="shezhi" value="舌下静脉曲张">舌下静脉曲张
+		   <input type="checkbox" name="shezhi" value="红降">红降
+	       <input type="checkbox" name="shezhi" value="红">红
+	       <input type="checkbox" name="shezhi" value="边尖红">边尖红
+		   <input type="checkbox" name="shezhi" value="胖">胖
+	       <input type="checkbox" name="shezhi" value="嫩">嫩
+	       <input type="checkbox" name="shezhi" value="瘀斑瘀点">瘀斑瘀点
+		   <input type="checkbox" name="shezhi" value="紫暗">紫暗
+	       <input type="checkbox" name="shezhi" value="其他">其他  
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">舌苔：</label>
+	    <div class="col-sm-10 form-group">
+	      <input type="checkbox" name="shetai" value="白">白
+	       <input type="checkbox" name="shetai" value="薄">薄
+	       <input type="checkbox" name="shetai" value="水滑">水滑
+		   <input type="checkbox" name="shetai" value="干">干
+	       <input type="checkbox" name="shetai" value="少/无">少/无
+	       <input type="checkbox" name="shetai" value="其他">其他
+		   <input type="checkbox" name="shetai" value="黄">黄
+	       <input type="checkbox" name="shetai" value="厚">厚
+	       <input type="checkbox" name="shetai" value="润">润
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">脉象：</label>
+	    <div class="col-sm-10 form-group">
+	      <input type="checkbox" name="maixiang" value="平脉">平脉
+	       <input type="checkbox" name="maixiang" value="沉脉">沉脉
+	       <input type="checkbox" name="maixiang" value="数脉">数脉
+		   <input type="checkbox" name="maixiang" value="缓脉">缓脉
+	       <input type="checkbox" name="maixiang" value="弦脉">弦脉
+	       <input type="checkbox" name="maixiang" value="涩脉">涩脉
+		   <input type="checkbox" name="maixiang" value="紧脉">紧脉
+	       <input type="checkbox" name="maixiang" value="其他">其他
+	       <input type="checkbox" name="maixiang" value="浮脉">浮脉
+		   <input type="checkbox" name="maixiang" value="迟脉">迟脉
+		   <input type="checkbox" name="maixiang" value="细脉">细脉
+		   <input type="checkbox" name="maixiang" value="虚弱">虚弱
+		   <input type="checkbox" name="maixiang" value="濡脉">濡脉
+		   <input type="checkbox" name="maixiang" value="滑脉">滑脉
+		   <input type="checkbox" name="maixiang" value="短脉">短脉
+		   <input type="checkbox" name="maixiang" value="结代">结代
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">性格：</label>
+	    <div class="col-sm-10 form-group">
+	      <input type="checkbox" name="xingge" value="温和">温和
+	       <input type="checkbox" name="xingge" value="内向">内向
+	       <input type="checkbox" name="xingge" value="爱动">爱动
+		   <input type="checkbox" name="xingge" value="沉稳">沉稳
+	       <input type="checkbox" name="xingge" value="忧柔">忧柔
+	       <input type="checkbox" name="xingge" value="倔强">倔强
+		   <input type="checkbox" name="xingge" value="急躁">急躁
+	       <input type="checkbox" name="xingge" value="外向">外向
+	       <input type="checkbox" name="xingge" value="喜静">喜静
+		   <input type="checkbox" name="xingge" value="乐观">乐观
+	       <input type="checkbox" name="xingge" value="直爽">直爽
+		   <input type="checkbox" name="xingge" value="随和">随和
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">饮食习惯：</label>
+	    <div class="col-sm-10 form-group">
+	      <input type="checkbox" name="yinshi" value="喜甘甜">喜甘甜
+		  <input type="checkbox" name="yinshi" value="喜酸">喜酸
+		  <input type="checkbox" name="yinshi" value="喜清淡">喜清淡
+		  <input type="checkbox" name="yinshi" value="喜烧烤">喜烧烤
+		  <input type="checkbox" name="yinshi" value="喜热">喜热
+		  <input type="checkbox" name="yinshi" value="喜辛辣">喜辛辣
+		  <input type="checkbox" name="yinshi" value="喜咸">喜咸
+		  <input type="checkbox" name="yinshi" value="喜油腻">喜油腻
+		  <input type="checkbox" name="yinshi" value="喜凉">喜凉
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">烟、酒、茶健康状况：</label>
+	    <div class="col-sm-10 form-group">
+	      <input type="checkbox" name="yanjiu" value="吸烟">吸烟
+		  <input type="checkbox" name="yanjiu" value="饮酒">饮酒
+		  <input type="checkbox" name="yanjiu" value="饮茶">饮茶
+		  <input type="checkbox" name="yanjiu" value="碳酸饮料">碳酸饮料
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">睡眠习惯：</label>
+	    <div class="col-sm-10 form-group">
+	      <input name="shuimian" type="radio" value="早睡早起" />早睡早起
+		  <input name="shuimian" type="radio" value="晚睡晚起" />晚睡晚起
+		  <input name="shuimian" type="radio" value="早睡晚起" />早睡晚起
+		  <input name="shuimian" type="radio" value="晚睡早起" />晚睡早起
+		  <input name="shuimian" type="radio" value="不规律" />不规律
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">运动习惯：</label>
+	    <div class="col-sm-10 form-group">
+	      <input name="yundong" type="radio" value="经常运动" />经常运动
+		  <input name="yundong" type="radio" value="有时运动" />有时运动
+		  <input name="yundong" type="radio" value="不爱运动" />不爱运动
+	    </div>
+	</div>
+	<div class="row">
+	    <label class="col-sm-2 control-label">文化活动：</label>
+	    <div class="col-sm-10 form-group">
+	      <input type="checkbox" name="wenhua" value="桥牌麻将">桥牌麻将
+		  <input type="checkbox" name="wenhua" value="跳舞">跳舞
+		  <input type="checkbox" name="wenhua" value="曲艺">曲艺
+		  <input type="checkbox" name="wenhua" value="体育健康">体育健康
+		  <input type="checkbox" name="wenhua" value="垂钓花鸟">垂钓花鸟
+		  <input type="checkbox" name="wenhua" value="书画">书画
+	    </div>
+	</div>
+	<div class="row">
+        <label class="col-sm-2 control-label">过敏史：</label>
+        <div class="col-sm-10 form-group">
+          <input name="guomin" type="radio" value="有" checked />有
+		  <input name="guomin" type="radio" value="无" />无 
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 control-label">家族史：</label>
+        <div class="col-sm-10 form-group">
+          <input name="jiazu" type="radio" value="有" checked />有
+		  <input name="jiazu" type="radio" value="无" />无
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 control-label">疾病史：</label>
+        <div class="col-sm-10 form-group">
+          <input name="jibing" type="radio" value="有" checked />有
+		  <input name="jibing" type="radio" value="无" />无
+        </div>
+    </div>
+    <div class="text-center">
+    <button class="btn btn-default btn-sm btn-clear" type="reset"><span class="glyphicon glyphicon-refresh"></span>重置</button>
+    <button class="btn btn-primary btn-sm btn-back" onclick="javasrcipt:history.go(-1)"><span class="glyphicon glyphicon-step-backward"></span>上一步</button>
+    <button class="btn btn-primary btn-sm btn-next" type="submit"><span class="glyphicon glyphicon-step-forward"></span>下一步</button>
+    </div>  
+</form>
+
+</div>
+<%- include footer %>

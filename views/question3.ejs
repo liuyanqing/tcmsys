@@ -1,0 +1,82 @@
+<%- include header %>
+<%- include sider %>
+<div class="wid question-test clear">
+<h4>中医体质辨识问卷 第二步：请选择您的体质类型（共4步）（共4步）</h4>
+<p class="strong tip">请您根据自身情况，选择相应的体质测试项目，可多选。</p><p class="text-muted tip">1、选中的为客户要回答的问题，不选中的为排除体质。<br/>2、女性多为气虚、阳虚、气郁；男性多为痰湿、阴虚、湿热。</p>
+<form class="question2-form" method="POST" name="question1">
+<input type="hidden" name="name" value="<%= user.name %>"/>
+	<table class="table table-striped table-bordered table-hover table-responsive">			
+		<thead>
+	     <tr>
+	       <th></th>
+	       <th>编号</th>
+	       <th>体质类型</th>
+	       <th>主要特征</th>
+	     </tr>
+	   </thead>
+	   <tbody>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="A"></td>
+	       <td>1</td>
+	       <td>平和质</td>
+	       <td>阴阳气血调和，以体态适中、面色红润、精力充沛等为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="B"></td>
+	       <td>2</td>
+	       <td>气虚质</td>
+	       <td>元气不足，以疲乏、气短、自汗等气虚表现为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="C"></td>
+	       <td>3</td>
+	       <td>阳虚质</td>
+	       <td>阳气不足，以畏寒怕冷、手足不温等虚寒表现为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="D"></td>
+	       <td>4</td>
+	       <td>阴虚质</td>
+	       <td>阴液亏少，以口燥咽干、手足心热等虚热表现为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="E"></td>
+	       <td>5</td>
+	       <td>痰湿质</td>
+	       <td>阴液亏少，以口燥咽干、手足心热等虚热表现为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="F"></td>
+	       <td>6</td>
+	       <td>湿热质</td>
+	       <td>湿热内蕴，以面垢油光、口苦、苔黄腻等湿热表现为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="G"></td>
+	       <td>7</td>
+	       <td>血瘀质</td>
+	       <td>血行不畅，以肤色晦黯、舌质紫黯等血瘀表现为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="H"></td>
+	       <td>8</td>
+	       <td>气郁质</td>
+	       <td>气机郁滞，以神情抑郁、忧虑脆弱等气郁表现为主要特征。</td>
+	     </tr>
+	     <tr>
+	       <td><input type="checkbox" name="tizhi" value="I"></td>
+	       <td>9</td>
+	       <td>特禀质</td>
+	       <td>先天失常，以生理缺陷、过敏反应等为主要特征。</td>
+	     </tr>
+	   </tbody>
+	</table>
+	
+    <div class="text-center">
+    <button class="btn btn-primary btn-sm btn-back" onclick="javasrcipt:history.go(-1)"><span class="glyphicon glyphicon-step-backward"></span>上一步</button>
+    <button class="btn btn-primary btn-sm btn-next" type="submit"><span class="glyphicon glyphicon-step-forward"></span>下一步</button>
+    </div>  
+</form>
+
+</div>
+<%- include footer %>

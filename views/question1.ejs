@@ -1,0 +1,281 @@
+<%- include header %>
+<%- include sider %>
+<div class="wid question-test clear">
+<h4>中医体质辨识问卷 第一步：填写个人信息（1）（共4步）</h4>
+<form class="question1-form" method="POST" name="question1">
+	<div class="row">
+        <label for="name" class="col-sm-2 control-label"><span class="text-fill">*</span>名称：</label>
+        <div class="col-sm-4 form-group name">
+        	<input type="hidden" name="name" value="<%= user.name %>"/>
+        	<%= user.name %>           
+        </div>
+        <label class="col-sm-2 control-label">性别：</label>
+        <div class="col-sm-4 form-group">
+        <% if(!questionone){%>
+            <input type="radio"  name="sex" value="man"
+                   title="请选择性别" checked /> 男
+            <input type="radio"  name="sex" value="woman"
+                   title="请选择性别" /> 女
+        <% } else{ %>
+        	<input type="radio"  name="sex" value="man"
+                   title="请选择性别" <%= questionone.sex=="man"?"checked":"" %> /> 男
+            <input type="radio"  name="sex" value="woman"
+                   title="请选择性别" <%= questionone.sex=="woman"?"checked":"" %> /> 女
+        <% }%>
+        </div>
+   	</div>
+   	<div class="row">
+        <label for="age" class="col-sm-2 control-label"><span class="text-fill">*</span>年龄：</label>
+        <div class="col-sm-4 form-group">
+        <% if(!questionone){%>
+	        <input type="number" id="age" name="age" class="form-control required" title="年龄不能为空" required  min="1" />
+        <% } else{ %>
+        	<input type="number" id="age" name="age" class="form-control required" title="年龄不能为空" required value="<%= questionone.age %>" min="1">
+        <% }%>
+        </div>
+        <label class="col-sm-2 control-label">婚姻：</label>
+        <div class="col-sm-4">
+        <% if(!questionone){%>
+        <input type="radio" name="matrimony" value="0" title="请选择婚姻状况" checked /> 已婚
+        <input type="radio" name="matrimony" value="1" title="请选择婚姻状况" /> 未婚
+        <input type="radio" name="matrimony" value="2" title="请选择婚姻状况" /> 其他
+        <% } else{ %>
+        <input type="radio" name="matrimony" value="0" title="请选择婚姻状况" <%= questionone.matrimony==0?"checked":"" %> /> 已婚
+        <input type="radio" name="matrimony" value="1" title="请选择婚姻状况" <%= questionone.matrimony==1?"checked":"" %> /> 未婚
+        <input type="radio" name="matrimony" value="2" title="请选择婚姻状况" <%= questionone.matrimony==2?"checked":"" %> /> 其他
+        <% }%>
+        </div>
+    </div>
+    <div class="row">
+        <label for="tel" class="col-sm-2 control-label"><span class="text-fill">*</span>联系电话：</label>
+        <div class="col-sm-4 form-group">
+        <% if(!questionone){%>
+            <input type="text" id="tel" name="tel" class="form-control" required />
+        <% } else{ %>
+        	<input type="text" id="tel" name="tel" class="form-control" required value="<%= questionone.tel %>" />
+        <% }%>
+        </div>
+        <label for="idcard" class="col-sm-2 control-label"><span class="text-fill">*</span>身份证号：</label>
+        <div class="col-sm-4">
+        <% if(!questionone){%>
+            <input type="text" id="idcard" name="idcard" class="form-control" required />
+        <% } else{ %>
+        	<input type="text" id="idcard" name="idcard" class="form-control" required value="<%= questionone.idcard %>" />
+        <% }%>
+        </div>
+    </div>
+    <div class="row">
+        <label for="nation" class="col-sm-2 control-label">民族：</label>
+        <div class="col-sm-4 form-group">
+            <select name="nation" id="nation" class="input-sm">
+            <% if(!questionone){%>
+            <option value="Han" selected>汉族</option>
+            <option value="minority">少数民族</option>
+            <% } else{ %>
+            <option value="Han" <%= questionone.nation=="Han"?"selected":"" %>>汉族</option>
+            <option value="minority" <%= questionone.nation=="minority"?"selected":""%>>少数民族</option>
+            <% }%>
+            </select>
+        </div>
+        <label class="col-sm-2 control-label">籍贯：</label>
+        <div class="col-sm-4 form-group">
+            <select id="province" name="province" class="input-sm" onChange="select()"></select><span>省</span>　
+		    <select id="city" name="city" class="input-sm" onChange="select()"></select><span>市</span>
+        </div>
+   	</div>
+    <div class="row">
+        <label for="security" class="col-sm-2 control-label">社会保障：</label>
+        <div class="col-sm-4 form-group">
+            <select name="security" id="security" class="input-sm">
+            <% if(!questionone){%>
+            <option value="省医保" selected>省医保</option>
+            <option value="市医保">市医保</option>
+            <option value="新农村合作医疗保险">新农村合作医疗保险</option>
+            <% } else{ %>
+            <option value="省医保" <%= questionone.security=="省医保"?"selected":"" %>>省医保</option>
+            <option value="市医保" <%= questionone.security=="市医保"?"selected":"" %>>市医保</option>
+            <option value="新农村合作医疗保险" <%= questionone.security=="新农村合作医疗保险"?"selected":"" %>>新农村合作医疗保险</option>
+            <% }%>
+            </select>
+        </div>
+        <label for="insurance" class="col-sm-2 control-label">保险号：</label>
+        <div class="col-sm-4">
+        <% if(!questionone){%>
+            <input type="text" id="insurance" name="insurance" class="form-control" />
+        <% } else{ %>
+        	<input type="text" id="insurance" name="insurance" class="form-control" value="<%= questionone.insurance %>" />
+        <% }%>
+        </div>
+   	</div>
+   	<div class="row">
+        <label for="email" class="control-label col-sm-2">Email：</label>
+        <div class="form-group col-sm-8">
+        	<input type="hidden" name="email" value="<%= user.email %>" />
+	        <input type="email" id="email" name="email" class="form-control"  value="<%= user.email %>" />
+        </div> 
+    </div>
+    <div class="row">
+        <label for="address" class="control-label col-sm-2">地址：</label>
+        <div class="form-group col-sm-8">
+        <% if(!questionone){%>
+            <input type="text" id="address" name="address" class="form-control" />
+        <% } else{ %>
+        	<input type="text" id="address" name="address" class="form-control" value="<%= questionone.address %>" />
+        <% }%>
+        </div> 
+    </div>
+    <div class="row">
+        <label class="col-sm-2 control-label">职业：</label>
+        <div class="col-sm-10 form-group">
+        <% if(!questionone){%>
+          <input name="job" type="radio" value="j1" checked />国家机关、党政组织、企事业单位人员
+          <input name="job" type="radio" value="j2" />军人
+		  <input name="job" type="radio" value="j3" />学生
+          <input name="job" type="radio" value="j4" />专业技术人员 
+		  <input name="job" type="radio" value="j5" />农、林牧、水利工作人员
+          <input name="job" type="radio" value="j6" />办事人员 
+		  <input name="job" type="radio" value="j7" />商业、服务人员
+          <input name="job" type="radio" value="j8" />无职业 
+		  <input name="job" type="radio" value="j9" />其他  
+		 <% } else{ %>
+		 <input name="job" type="radio" value="j1" <%= questionone.job=="j1"?"checked":"" %>/>国家机关、党政组织、企事业单位人员
+          <input name="job" type="radio" value="j2" <%= questionone.job=="j2"?"checked":"" %> />军人
+		  <input name="job" type="radio" value="j3" <%= questionone.job=="j3"?"checked":"" %> />学生
+          <input name="job" type="radio" value="j4" <%= questionone.job=="j4"?"checked":"" %> />专业技术人员 
+		  <input name="job" type="radio" value="j5" <%= questionone.job=="j5"?"checked":"" %> />农、林牧、水利工作人员
+          <input name="job" type="radio" value="j6" <%= questionone.job=="j6"?"checked":"" %> />办事人员 
+		  <input name="job" type="radio" value="j7" <%= questionone.job=="j7"?"checked":"" %> />商业、服务人员
+          <input name="job" type="radio" value="j8" <%= questionone.job=="j8"?"checked":"" %> />无职业 
+		  <input name="job" type="radio" value="j9" <%= questionone.job=="j9"?"checked":"" %> />其他 
+		 <% }%>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 control-label">教育程度：</label>
+        <div class="col-sm-10 form-group">
+        <% if(!questionone){%>
+          <input name="education" type="radio" value="e1" checked />小学以下
+          <input name="education" type="radio" value="e2" />小学
+		  <input name="education" type="radio" value="e3" />初中
+          <input name="education" type="radio" value="e4" />高中
+		  <input name="education" type="radio" value="e5" />大学
+          <input name="education" type="radio" value="e6" />硕士及以上 
+        <% } else{ %> 
+          <input name="education" type="radio" value="e1" <%= questionone.education=="e1"?"checked":"" %> />小学以下
+          <input name="education" type="radio" value="e2" <%= questionone.education=="e2"?"checked":"" %> />小学
+		  <input name="education" type="radio" value="e3" <%= questionone.education=="e3"?"checked":"" %> />初中
+          <input name="education" type="radio" value="e4" <%= questionone.education=="e4"?"checked":"" %> />高中
+		  <input name="education" type="radio" value="e5" <%= questionone.education=="e5"?"checked":"" %> />大学
+          <input name="education" type="radio" value="e6" <%= questionone.education=="e6"?"checked":"" %> />硕士及以上
+        <% }%>
+        </div>
+    </div>
+    <div class="row">
+        <label class="col-sm-2 control-label">视力：</label>
+        <div class="col-sm-2 form-group input-group">
+        <% if(!questionone){%>
+            <input type="text" id="vision1" name="vision1" class="form-control"/> 
+        <% } else{ %>
+        	<input type="text" id="vision1" name="vision1" class="form-control"
+        	value="<%= questionone.vision1 %>"/>
+        <% }%> 
+        	<div class="input-group-addon">     		
+	            <select name="vision2" id="vision2" class="input-sm">
+	            <% if(!questionone){%>
+	            <option value="normal" selected>正常</option>
+	            <option value="shortsight">近视</option>
+	            <option value="farsight">远视</option>
+	            <% } else{ %>
+	            <option value="normal" <%= questionone.vision2=="normal"?"selected":"" %>>正常</option>
+	            <option value="shortsight" <%= questionone.vision2=="shortsight"?"selected":"" %>>近视</option>
+	            <option value="farsight" <%= questionone.vision2=="farsight"?"selected":"" %>>远视</option>
+	            <% }%>
+	            </select> 
+	        </div>
+        </div>
+        <label for="height" class="col-sm-1 control-label">身高：</label>
+        <div class="col-sm-2 form-group input-group">
+        <% if(!questionone){%>
+            <input type="text" name="height" id="height" class="form-control" /> 
+        <% } else{ %>
+        	<input type="text" name="height" id="height" class="form-control"
+        	value="<%= questionone.height %>" />
+        <% }%>
+            <span class="input-group-addon">cm</span>  
+        </div>
+        <label for="weight1" class="col-sm-1 control-label">体重：</label>
+        <div class="col-sm-2 form-group input-group">
+        <% if(!questionone){%>
+           <input type="text" name="weight1" id="weight1" class="form-control" />
+        <% } else{ %>
+        	<input type="text" name="weight1" id="weight1" class="form-control"
+        	value="<%= questionone.weight1 %>" />
+        <% }%> 
+           <span class="input-group-addon">kg</span>   
+        </div>
+        <label for="weight2" class="col-sm-1 control-label">体重比：</label>
+        <div class="col-sm-1 form-group">
+        <% if(!questionone){%>
+            <input type="text" name="weight2" id="weight2" class="form-control" />
+        <% } else{ %>
+            <input type="text" name="weight2" id="weight2" class="form-control" value="<%= questionone.weight2 %>" />
+        <% }%> 
+        </div>
+   	</div>
+   	<div class="row">
+   		<label class="col-sm-2 control-label">血压：</label>
+        <div class="col-sm-2 form-group input-group">
+        	<span class="input-group-addon">低压</span>
+        <% if(!questionone){%>
+            <input type="text" id="lowbloodpre" name="lowbloodpre" class="form-control" />
+        <% } else{ %>
+            <input type="text" id="lowbloodpre" name="lowbloodpre" class="form-control" value="<%= questionone.lowbloodpre %>" />
+        <% }%>
+        	<span class="input-group-addon">mmHg</span>  
+        </div>
+        <div class="col-sm-2 form-group input-group">
+        	<span class="input-group-addon">高压</span>
+        <% if(!questionone){%>
+            <input type="text" id="highbloodpre" name="highbloodpre" class="form-control" />
+        <% } else{ %>
+            <input type="text" id="highbloodpre" name="highbloodpre" class="form-control" value="<%= questionone.highbloodpre %>" />
+        <% }%>
+        	<span class="input-group-addon">mmHg</span> 
+        </div>
+        <label for="bloodfat" class="col-sm-1 control-label">血脂：</label>
+        <div class="col-sm-2 form-group input-group">
+        <% if(!questionone){%>
+            <input type="text" id="bloodfat" name="bloodfat" class="form-control"/>
+        <% } else{ %>
+            <input type="text" id="bloodfat" name="bloodfat" class="form-control" value="<%= questionone.highbloodpre %>" />
+        <% }%>
+        	<span class="input-group-addon">mmol/L</span>  
+        </div>
+        <label for="bloodsugar" class="col-sm-1 control-label">血糖：</label>
+        <div class="col-sm-2 form-group input-group">
+        <% if(!questionone){%>
+            <input type="text" id="bloodsugar" name="bloodsugar" class="form-control" />
+        <% } else{ %>
+            <input type="text" id="bloodsugar" name="bloodsugar" class="form-control" value="<%= questionone.bloodsugar %>" />
+        <% }%>
+        	<span class="input-group-addon">mmol/L</span> 
+        </div>
+   	</div>
+   	<div class="text-center">
+    <button class="btn btn-default btn-sm btn-clear" type="reset"><span class="glyphicon glyphicon-refresh"></span>重置</button>
+    <button class="btn btn-primary btn-sm btn-next" type="submit"><span class="glyphicon glyphicon-step-forward"></span>下一步</button>
+    </div>
+</form>
+<% if (error) { %>
+<div class="alert alert-danger alert-dismissable">
+	<%= error %>
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+	</button>
+</div>
+<% } %>
+<!-- question1-form end --->
+</div>
+<script>
+    init();
+</script>
+<%- include footer %>

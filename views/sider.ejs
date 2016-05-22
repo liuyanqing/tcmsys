@@ -1,0 +1,38 @@
+<div class="sidebar clear"> 
+    <div class="media">
+    <a class="pull-left" href="#">
+        <img class="user-image" alt="用户头像" src="/images/avatar.png" />
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading">我是<%= user.name %></h4>
+    </div>
+    </div>
+  <ul>
+    <li class="dropdown">
+      <a href="#" data-toggle="dropdown">功能<i class="icon-arrow"></i></a>
+      <ul class="dropdown-side-menu">
+        <li><a href="/question1">问卷测试</a></li>
+        <li><a href="/pulsecollect">脉搏信号采集</a></li>
+        <li><a href="/imagecollect">图像或视频信息采集</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" data-toggle="dropdown">查询<i class="icon-arrow"></i></a>
+      <ul class="dropdown-side-menu">
+        <li><a href="/result">测评结果</a></li>
+      </ul>
+    </li>
+    <% if(user.name == "admin"){ %>
+    <li class="dropdown">
+      <a href="#" data-toggle="dropdown">管理<i class="icon-arrow"></i></a>
+      <ul class="dropdown-side-menu">
+        <li><a href="/useradmin">用户管理</a></li>
+        <li><a href="/surveyadmin">问卷管理</a></li>
+        <li><a href="/answeradmin">答案管理</a></li>
+        <li><a href="/statistics">统计分析</a></li>
+      </ul>
+    </li>
+    <% } %>
+  </ul>
+
+</div>

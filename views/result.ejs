@@ -1,0 +1,21 @@
+<%- include header %>
+<% if (user) { %>
+<%- include sider %>
+<% } else { %>
+<script>location.href = "/login"</script>
+<% } %>
+<div class="wid result-page">
+	<h4>中医体质辨识系统测评结果</h4>
+	<div class="row">
+		<div class="col-sm-3">姓名：<%= user.name %></div>
+		<div class="col-sm-3">性别：</div>
+		<div class="col-sm-3">年龄：</div>
+		<div class="col-sm-3">婚姻：</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">联系方式：</div>
+		<div class="col-sm-4">联系方式：</div>
+	</div>
+	<div>经过测试情况，系统判断您的体质为：</div>
+</div>
+<%- include footer %>

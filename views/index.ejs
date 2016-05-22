@@ -1,0 +1,10 @@
+<%- include header %>
+<% if (user) { %>
+<%- include sider %>
+<% } else { %>
+<script>location.href = "/login"</script>
+<% } %>
+<div class="homepage-content text-center">
+<h1><span class="red"> <%= user.name %></span>，你好！欢迎访问中医体质辨识系统！</h1>
+</div>
+<%- include footer %>
