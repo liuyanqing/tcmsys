@@ -501,7 +501,7 @@ module.exports = function(app) {
 
     app.get('/pulsecollect', checkLogin);
     app.get('/pulsecollect', function (req, res) {
-        res.render('result', {
+        res.render('pulsecollect', {
             title: '脉搏信号采集|中医体质辨识系统',
             user: req.session.user,
             success: req.flash('success').toString(),
@@ -511,8 +511,8 @@ module.exports = function(app) {
 
     app.get('/imagecollect', checkLogin);
     app.get('/imagecollect', function (req, res) {
-        res.render('result', {
-            title: '脉搏信号采集|中医体质辨识系统',
+        res.render('imagecollect', {
+            title: '图像信息采集|中医体质辨识系统',
             user: req.session.user,
             success: req.flash('success').toString(),
             error: req.flash('error').toString()

@@ -6,16 +6,37 @@
 <% } %>
 <div class="wid result-page">
 	<h4>中医体质辨识系统测评结果</h4>
-	<div class="row">
-		<div class="col-sm-3">姓名：<%= user.name %></div>
-		<div class="col-sm-3">性别：</div>
-		<div class="col-sm-3">年龄：</div>
-		<div class="col-sm-3">婚姻：</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-4">联系方式：</div>
-		<div class="col-sm-4">联系方式：</div>
-	</div>
-	<div>经过测试情况，系统判断您的体质为：</div>
+	<table class="table table-striped table-bordered table-hover table-responsive">
+		<thead>
+		<th colspan="2">经过测试情况，系统判断您的体质为：</th>
+		<tr><th colspan="2">基本信息</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="td-first">姓名</td>
+				<td><%= user.name %></td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>年龄</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>婚姻</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>联系方式</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>婚姻</td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 <%- include footer %>

@@ -1,0 +1,11 @@
+<%- include header %>
+<% if (user) { %>
+<%- include sider %>
+<% } else { %>
+<script>location.href = "/login"</script>
+<% } %>
+<div class="wid useradmin-page">
+	<h4>中医体质辨识系统图像信息采集</h4>
+
+</div>
+<%- include footer %>

@@ -399,10 +399,9 @@ header {
 }
 /*----------------------------question-test,result-page,result-page-------------------*/
 .wid {
-	min-width: 816px;
-	width: 79%;
+	width: 78%;
     float: right;
-    padding-right: 18px;
+    padding-right: 30px;
 }
 .wid h4 {
 	margin-bottom: 8px;
@@ -421,7 +420,7 @@ header {
 }
 .form-group {
 	margin-bottom: 10px;
-    line-height: 30px;
+    line-height: 28px;
 }
 .form-control {
 	height: 32px;
@@ -459,4 +458,17 @@ header {
 	font-size: 22px;
     margin: 100px;
     line-height: 60px;
+}
+/*测试结果,用户管理*/
+.result-page table tr>td {
+    text-align: center;
+}
+.result-page table tr>td.td-first {
+    width: 40%;
+}
+/*脉搏波采集*/
+.pulse-view {
+    background-color: #0b97c4;
+    width: 80%;
+    height: 400px;
 }

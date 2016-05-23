@@ -1,0 +1,21 @@
+<%- include header %>
+<% if (user) { %>
+<%- include sider %>
+<% } else { %>
+<script>location.href = "/login"</script>
+<% } %>
+<div class="wid useradmin-page">
+	<h4>中医体质辨识系统脉搏波采集</h4>
+	<canvas class="pulse-view"></canvas>
+	<form>
+		<label for="openPort">开启串口</label>
+		<input type="text" name="openPort" id="openPort">
+		<label for="baudrate">波特率</label>
+		<input type="text" id="baudrate" name="baudrate" readonly>
+		<button type="button" class="btn btn-default">开启设备</button>
+		<button type="button" class="btn btn-primary">停止设备</button>
+		<button type="button" class="btn btn-default">开始采样</button>
+		<button type="button" class="btn btn-primary">停止采样</button>
+	</form>
+</div>
+<%- include footer %>
