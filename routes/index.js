@@ -4,9 +4,11 @@ var crypto = require('crypto'),
     Questionone = require('../models/question1.js'),
     Questiontwo = require('../models/question2.js'),
     Questionthree = require('../models/question3.js'),
-    Questionscore = require('../models/question4.js');
+    Questionfour = require('../models/question4.js'),
+    Score = require('../models/score-result.js');
 
 module.exports = function(app) {
+  app.get('/', checkLogin);
   app.get('/', function (req, res) {
       res.render('index', {
         title: '首页|中医体质辨识系统',
@@ -98,7 +100,7 @@ module.exports = function(app) {
   app.get('/logout', function (req, res) {
     req.session.user = null;
     req.flash('success', '登出成功!');
-    res.redirect('/');//登出成功后跳转到主页
+    res.redirect('/login');//登出成功后跳转到主页
   });
 
   app.get('/upload', checkLogin);
@@ -306,6 +308,7 @@ module.exports = function(app) {
         name: req.body.name,
         tizhi: req.body.tizhi
         });
+
       Questionthree.update(req.body.name,questionthree,function(err){
       if (err) {
         req.flash('error', err); 
@@ -315,8 +318,8 @@ module.exports = function(app) {
       res.redirect('/question4');
     })
   }
-})
-});
+  })
+  });
 
   app.get('/question4', checkLogin);
   app.get('/question4', function (req, res) {
@@ -336,9 +339,9 @@ module.exports = function(app) {
   });
   app.post('/question4', checkLogin);
   app.post('/question4', function (req, res) {
-    Questionscore.get(req.body.name, function (err, questionscore){
-        if(!questionscore){
-          var questionscore = new Questionscore({
+    Questionfour.get(req.body.name, function (err, questionfour){
+        if(!questionfour){
+          var questionfour = new Questionfour({
             name: req.body.name,
             Ascore1 : req.body.Ascore1,
             Ascore2 : req.body.Ascore2,
@@ -408,7 +411,7 @@ module.exports = function(app) {
             Iscore6 : req.body.Iscore6,
             Iscore7 : req.body.Iscore7
             });
-          questionscore.save(function (err) {
+          questionfour.save(function (err) {
           if (err) {
             req.flash('error', err); 
             return false;
@@ -417,7 +420,7 @@ module.exports = function(app) {
           res.redirect('/result');//完成测试以后进入体质测试结果
           });
       }else{
-        var questionscore = new Questionscore({
+        var questionfour = new Questionfour({
             name: req.body.name,
             Ascore1 : req.body.Ascore1,
             Ascore2 : req.body.Ascore2,
@@ -487,7 +490,7 @@ module.exports = function(app) {
             Iscore6 : req.body.Iscore6,
             Iscore7 : req.body.Iscore7
             });
-          Questionscore.update(req.body.name,questionscore,function(err){
+          Questionfour.update(req.body.name,questionfour,function(err){
           if (err) {
             req.flash('error', err); 
             return res.redirect('/question4');
@@ -497,6 +500,30 @@ module.exports = function(app) {
         })
       }
     })
+  });
+
+  app.get('/result', checkLogin);
+  app.get('/result', function (req, res) {
+    Questionfour.get(req.session.user.name, function (err, questionfour) {
+      if(!questionfour){
+        req.flash('err', '没有进行体质测试');
+        res.redirect('/question4');
+      }
+      Questionone.get(req.session.user.name, function (err, questionone) {
+        if(!questionone){
+          req.flash('err', '没有填写个人信息');
+          res.redirect('/question1');
+        }
+        res.render('result', {
+          title: '测评结果|中医体质辨识系统',
+          user: req.session.user,
+          questionone: questionone,
+          questionfour: questionfour,
+          success: req.flash('success').toString(),
+          error: req.flash('error').toString()
+        });
+      });
+    });
   });
 
     app.get('/pulsecollect', checkLogin);
@@ -519,15 +546,6 @@ module.exports = function(app) {
         });
     });
 
-app.get('/result', checkLogin);
-app.get('/result', function (req, res) {
-  res.render('result', {
-    title: '测评结果|中医体质辨识系统',
-    user: req.session.user,
-    success: req.flash('success').toString(),
-    error: req.flash('error').toString()
-  });
-});
 
   app.get('/useradmin', checkLogin);
   app.get('/useradmin', function (req, res) {
@@ -539,14 +557,14 @@ app.get('/result', function (req, res) {
     });
   });
 
-app.get('/help', function (req, res) {
+  app.get('/help', function (req, res) {
   res.render('help', {
     title: '帮助|中医体质辨识系统',
     user: req.session.user,
     success: req.flash('success').toString(),
     error: req.flash('error').toString()
   });
-});
+  });
 
   function checkLogin(req, res, next) {
     if (!req.session.user) {

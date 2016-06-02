@@ -4,8 +4,21 @@
 <% } else { %>
 <script>location.href = "/login"</script>
 <% } %>
-<div class="wid useradmin-page">
+<script src="js/camera.js"></script>
+<div class="wid main-page">
 	<h4>中医体质辨识系统图像信息采集</h4>
-
+	<div id="video-container">
+		<h4>摄像头拍摄处</h4>
+		<video id="camera-stream">您的浏览器不支持HTML5d的video标签。</video>
+	</div>
+	<div id="pic-container">
+		<h4>拍摄照片处</h4>
+		<canvas id="canvas-pic">您的浏览器不支持HTML5的canvas元素</canvas>
+	</div>
+	<form>
+		<button class="btn btn-default btn-open-pic" type="button"><span class="glyphicon glyphicon-camera"></span>开启摄像头</button>
+		<button class="btn btn-default btn-take-pic" id="take-pic" type="button"><span class="glyphicon glyphicon-picture"></span>拍摄图片</button>
+		<button class="btn btn-primary btn-load" type="submit"><span class="glyphicon glyphicon-upload"></span>上传</button>
+	</form>
 </div>
 <%- include footer %>

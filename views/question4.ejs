@@ -1,5 +1,11 @@
 <%- include header %>
 <%- include sider %>
+<% if (error) { %>
+<div class="alert alert-danger alert-dismissable col-sm-12">
+	<%= error %>
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+</div>
+<% } %>
 <div class="wid question-test clear">
 <h4>中医体质辨识问卷 第三步：填写个人体质情况（共4步）（共4步）</h4>
 <form class="question2-form" method="POST" name="question1">
@@ -51,7 +57,7 @@
 <% }%>
     <div class="text-center">
     <button class="btn btn-primary btn-sm btn-back" onclick="javasrcipt:history.go(-1)"><span class="glyphicon glyphicon-step-backward"></span>上一步</button>
-    <button class="btn btn-primary btn-sm btn-next" type="submit"><span class="glyphicon glyphicon-step-forward"></span>下一步</button>
+    <button class="btn btn-primary btn-sm btn-save" type="submit"><span class="glyphicon glyphicon-saved"></span>保存并查看结果</button>
     </div>  
 </form>
 

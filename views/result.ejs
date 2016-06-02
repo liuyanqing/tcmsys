@@ -18,23 +18,23 @@
 			</tr>
 			<tr>
 				<td>性别</td>
-				<td></td>
+				<td><%= questionone.sex=="man"?"男":"" %><%= questionone.sex=="woman"?"女":"" %></td>
 			</tr>
 			<tr>
 				<td>年龄</td>
-				<td></td>
+				<td><%= questionone.age %></td>
 			</tr>
 			<tr>
 				<td>婚姻</td>
-				<td></td>
+				<td><%= questionone.matrimony==0?"已婚":"" %><%= questionone.matrimony==1?"已婚":"" %><%= questionone.matrimony==1?"未婚":"" %><%= questionone.matrimony==2?"其他":"" %></td>
 			</tr>
 			<tr>
 				<td>联系方式</td>
-				<td></td>
+				<td><%= questionone.tel %></td>
 			</tr>
 			<tr>
-				<td>婚姻</td>
-				<td></td>
+				<td>身份证号</td>
+				<td><%= questionone.idcard %></td>
 			</tr>
 		</tbody>
 	</table>

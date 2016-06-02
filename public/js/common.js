@@ -126,15 +126,14 @@ $('input').iCheck({
     });
 // alert hide
 function hideAlert(){
-	$(".alert-success").fadeIn(2000);
+	//$(".alert-success").fadeIn(2000);
     $(".alert-success").fadeOut(2000);
 }
 hideAlert();
 
-$(".btn-next").click(function () {
- 	var $form = $(".question2-form");
- 	var postData = $form.serialize();
-      //alert(postData);
-    });
-
+//$(".btn-save").click(function () {
+// 	var $form = $(".question2-form");
+// 	var postData = $form.serialize();
+//      alert(postData);
+//    });
 });
