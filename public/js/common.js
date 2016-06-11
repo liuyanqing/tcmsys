@@ -1,11 +1,108 @@
+$(document).ready(function(){
+	$('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%' 
+    });
+
+	hideAlert();
+$(".btn-save").on("click",function () {
+	var tizhi = [];
+	var Ascore = Number($("input[name='Ascore1']:checked").val()) + Number($("input[name='Ascore2']:checked").val()) + Number($("input[name='Ascore3']:checked").val()) + Number($("input[name='Ascore4']:checked").val()) + Number($("input[name='Ascore5']:checked").val()) + Number($("input[name='Ascore6']:checked").val()) + Number($("input[name='Ascore7']:checked").val()) + Number($("input[name='Ascore8']:checked").val());
+	var Bscore = Number($("input[name='Bscore1']:checked").val()) + Number($("input[name='Bscore2']:checked").val()) + Number($("input[name='Bscore3']:checked").val()) + Number($("input[name='Bscore4']:checked").val()) + Number($("input[name='Bscore5']:checked").val()) + Number($("input[name='Bscore6']:checked").val()) + Number($("input[name='Bscore7']:checked").val()) + Number($("input[name='Bscore8']:checked").val());
+	var Cscore = Number($("input[name='Cscore1']:checked").val()) + Number($("input[name='Cscore2']:checked").val()) + Number($("input[name='Cscore3']:checked").val()) + Number($("input[name='Cscore4']:checked").val()) + Number($("input[name='Cscore5']:checked").val()) + Number($("input[name='Cscore6']:checked").val()) + Number($("input[name='Cscore7']:checked").val());
+	var Dscore = Number($("input[name='Dscore1']:checked").val()) + Number($("input[name='Dscore2']:checked").val()) + Number($("input[name='Dscore3']:checked").val()) + Number($("input[name='Dscore4']:checked").val()) + Number($("input[name='Dscore5']:checked").val()) + Number($("input[name='Dscore6']:checked").val()) + Number($("input[name='Dscore7']:checked").val()) + Number($("input[name='Dscore8']:checked").val());
+	var Escore = Number($("input[name='Escore1']:checked").val()) + Number($("input[name='Escore2']:checked").val()) + Number($("input[name='Escore3']:checked").val()) + Number($("input[name='Escore4']:checked").val()) + Number($("input[name='Escore5']:checked").val()) + Number($("input[name='Escore6']:checked").val()) + Number($("input[name='Escore7']:checked").val()) + Number($("input[name='Escore8']:checked").val());
+	var Fscore = Number($("input[name='Fscore1']:checked").val()) + Number($("input[name='Fscore2']:checked").val()) + Number($("input[name='Fscore3']:checked").val()) + Number($("input[name='Fscore4']:checked").val()) + Number($("input[name='Fscore5']:checked").val()) + Number($("input[name='Fscore6']:checked").val());
+	var Gscore = Number($("input[name='Gscore1']:checked").val()) + Number($("input[name='Gscore2']:checked").val()) + Number($("input[name='Gscore3']:checked").val()) + Number($("input[name='Gscore4']:checked").val()) + Number($("input[name='Gscore5']:checked").val()) + Number($("input[name='Gscore6']:checked").val()) + Number($("input[name='Gscore7']:checked").val()) + Number($("input[name='Gscore8']:checked").val());
+	var Hscore = Number($("input[name='Hscore1']:checked").val()) + Number($("input[name='Hscore2']:checked").val()) + Number($("input[name='Hscore3']:checked").val()) + Number($("input[name='Hscore4']:checked").val()) + Number($("input[name='Hscore5']:checked").val()) + Number($("input[name='Hscore6']:checked").val()) + Number($("input[name='Hscore7']:checked").val());
+	var Iscore = Number($("input[name='Iscore1']:checked").val()) + Number($("input[name='Iscore2']:checked").val()) + Number($("input[name='Iscore3']:checked").val()) + Number($("input[name='Iscore4']:checked").val()) + Number($("input[name='Iscore5']:checked").val()) + Number($("input[name='Iscore6']:checked").val()) + Number($("input[name='Iscore7']:checked").val());
+	Ascore = (Ascore-8)/32*100;
+	Bscore = (Bscore-8)/32*100;
+	Cscore = (Cscore-7)/28*100;
+	Dscore = (Dscore-8)/32*100;
+	Escore = (Escore-8)/32*100;
+	Fscore = (Fscore-6)/24*100;
+	Gscore = (Gscore-8)/32*100;
+	Hscore = (Hscore-7)/28*100;
+	Iscore = (Iscore-7)/28*100;
+	var type = [Bscore,Cscore,Dscore,Escore,Fscore,Gscore,Hscore,Iscore];
+	$("#Ascore").val(Ascore);
+	$("#Bscore").val(Bscore);
+	$("#Cscore").val(Cscore);
+	$("#Dscore").val(Dscore);
+	$("#Escore").val(Escore);
+	$("#Fscore").val(Fscore);
+	$("#Gscore").val(Gscore);
+	$("#Hscore").val(Hscore);
+	$("#Iscore").val(Iscore);
+	for(var i=0;i<8;i++){
+		if(type[i]>40){
+			tizhi[i] = "1";
+		}else {
+			tizhi[i] = "0";
+		}
+	}
+	if(tizhi.length == 0){
+		tizhi[8] = "A";
+	}
+	$("#result").val(tizhi);
+    });
+
+});
+//pulse wave
+//function getPulseData(){
+//	var dps = []; // dataPoints
+//
+//	var chart = new CanvasJS.Chart("chartContainer",{
+//		title :{
+//			text: "脉搏波信号"
+//		},
+//		data: [{
+//			type: "line",
+//			dataPoints: dps
+//		}]
+//	});
+//
+//	var xVal = 0;
+//	var yVal = 100;
+//	var updateInterval = 100;
+//	var dataLength = 500; // number of dataPoints visible at any point
+//
+//	var updateChart = function (count) {
+//		count = count || 1;
+//		// count is number of times loop runs to generate random dataPoints.
+//
+//		for (var j = 0; j < count; j++) {
+//			yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+//			dps.push({
+//				x: xVal,
+//				y: yVal
+//			});
+//			xVal++;
+//		}
+//		if (dps.length > dataLength)
+//		{
+//			dps.shift();
+//		}
+//
+//		chart.render();
+//
+//	};
+//
+//	// generates first set of dataPoints
+//	updateChart(dataLength);
+//	setInterval(function(){updateChart()}, updateInterval);
+//}
+
 // Dropdown Menu
 var dropdown = document.querySelectorAll('.dropdown');
 var dropdownArray = Array.prototype.slice.call(dropdown,0);
 
 dropdownArray.forEach(function(el){
 	var button = el.querySelector('a[data-toggle="dropdown"]'),
-			menu = el.querySelector('.dropdown-side-menu'),
-			arrow = button.querySelector('i.icon-arrow');
+		menu = el.querySelector('.dropdown-side-menu'),
+		arrow = button.querySelector('i.icon-arrow');
 
 	button.onclick = function(event) {
 		if(!menu.hasClass('show')) {
@@ -25,7 +122,7 @@ dropdownArray.forEach(function(el){
 	};
 });
 Element.prototype.hasClass = function(className) {
-    return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
+	return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
 };
 var where = new Array(35);
 function comefrom(loca,locacity)
@@ -116,24 +213,8 @@ function init()
 		options[selectedIndex].text = loca3[0]; options[selectedIndex].value = loca3[0];
 	}
 }
-
-
-$(document).ready(function(){
-$('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' 
-    });
 // alert hide
 function hideAlert(){
 	//$(".alert-success").fadeIn(2000);
-    $(".alert-success").fadeOut(2000);
+	$(".alert-success").fadeOut(2000);
 }
-hideAlert();
-
-//$(".btn-save").click(function () {
-// 	var $form = $(".question2-form");
-// 	var postData = $form.serialize();
-//      alert(postData);
-//    });
-});

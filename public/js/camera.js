@@ -34,7 +34,7 @@ $(document).ready(function(){
      }
     });
     $(".btn-take-pic").on("click", function () {
-        context.drawImage(vid, 0, 0,300,200);
+        context.drawImage(vid, 0, 0,250,130);
     });
 
 });

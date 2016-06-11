@@ -8,7 +8,26 @@
 	<h4>中医体质辨识系统测评结果</h4>
 	<table class="table table-striped table-bordered table-hover table-responsive">
 		<thead>
-		<th colspan="2">经过测试情况，系统判断您的体质为：</th>
+		<th colspan="2">经过测试情况，系统判断您的体质为：
+			<% if(questionfour.result[8] == "A"){%>平和质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[0] == "1"){%>气虚质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[1] == "1"){%>阳虚质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[2] == "1"){%>阴虚质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[3] == "1"){%>痰湿质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[4] == "1"){%>湿热质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[5] == "1"){%>血瘀质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[6] == "1"){%>气郁质&nbsp&nbsp&nbsp&nbsp
+			<% }%>
+			<% if(questionfour.result[7] == "1"){%>特禀质
+			<% }%>
+		</th>
 		<tr><th colspan="2">基本信息</th></tr>
 		</thead>
 		<tbody>
