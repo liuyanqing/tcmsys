@@ -36,7 +36,80 @@
 				<td>身份证号</td>
 				<td><%= questionone.idcard %></td>
 			</tr>
+			<tr>
+				<td>平和质转换分数</td>
+				<% if(questionfour.Ascore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Ascore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>气虚质转换分数</td>
+				<% if(questionfour.Bscore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Bscore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>阳虚质转换分数</td>
+				<% if(questionfour.Cscore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Cscore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>阴虚质转换分数</td>
+				<% if(questionfour.Dscore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Dscore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>痰湿质转换分数</td>
+				<% if(questionfour.Escore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Escore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>湿热质转换分数</td>
+				<% if(questionfour.Fscore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Fscore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>血瘀质转换分数</td>
+				<% if(questionfour.Gscore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Gscore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>气郁质转换分数</td>
+				<% if(questionfour.Hscore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Hscore %></td>
+				<% }%>
+			</tr>
+			<tr>
+				<td>特禀质转换分数</td>
+				<% if(questionfour.Iscore == null){%>
+				<td>未测试</td>
+				<% } else{ %>
+				<td><%= questionfour.Iscore %></td>
+				<% }%>
+			</tr>
 		</tbody>
 	</table>
 </div>
+
 <%- include footer %>

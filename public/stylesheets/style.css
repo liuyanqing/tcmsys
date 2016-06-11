@@ -470,10 +470,23 @@ header {
     width: 40%;
 }
 /*脉搏波采集，图像信息采集*/
+#progressbar {
+    width: 99%;
+    height: 50px;
+}
 #chartContainer {
-    width: 100%;
+    width: 99%;
     height: 400px;
     border: 1px solid #bbb;
+}
+#open-device a,#start-sample a {
+    color: black;
+}
+#close-device a,#stop-sample a {
+    color: white;
+}
+#open-device a,#start-sample a,#close-device a,#stop-sample a {
+    text-decoration: none;
 }
 .main-page form {
     margin-top: 25px;
