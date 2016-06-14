@@ -111,6 +111,37 @@ Questionone.get = function(name, callback) {
   });
 };
 
+//读取所有用户问卷一信息
+Questionone.getAll = function(callback) {
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);//错误，返回 err 信息
+    }
+    //读取 Questionone 集合
+    db.collection('questionone', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);//错误，返回 err 信息
+      }
+      collection.find({
+      },{
+        "name": 1,
+        "sex": 1,
+        "age": 1,
+        "tel": 1,
+        "idcard": 1
+      }).toArray(function (err, docs) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null, docs);
+      });
+    });
+  });
+};
+
 Questionone.update = function(name,questionone, callback) {
   //打开数据库
   mongodb.open(function (err, db) {

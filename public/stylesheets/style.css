@@ -469,6 +469,9 @@ header {
 .result-page table tr>td.td-first {
     width: 40%;
 }
+.useradmin-table td button {
+    margin-right: 4px;
+}
 /*脉搏波采集，图像信息采集*/
 #progressbar {
     width: 99%;
@@ -479,13 +482,13 @@ header {
     height: 400px;
     border: 1px solid #bbb;
 }
-#open-device a,#start-sample a {
+#open-device a,#start-sample a,#report-download a {
     color: black;
 }
-#close-device a,#stop-sample a {
+#close-device a,#stop-sample a,#report-view a {
     color: white;
 }
-#open-device a,#start-sample a,#close-device a,#stop-sample a {
+#open-device a,#start-sample a,#close-device a,#stop-sample a,#report-download a,#report-view a {
     text-decoration: none;
 }
 .main-page form {

@@ -1,0 +1,62 @@
+<%- include header %>
+<% if (user) { %>
+<%- include sider %>
+<% } else { %>
+<script>location.href = "/login"</script>
+<% } %>
+<div class="wid main-page">
+	<h4>中医体质辨识系统脉搏波采集</h4>
+	<div id="chartContainer"></div>
+	<form>
+		<label for="openPort">开启串口</label>
+		<input type="text" name="openPort" id="openPort" value="COM3">
+		<label for="baudrate">波特率</label>
+		<input type="text" id="baudrate" name="baudrate" readonly value="9600">
+		<!--<button type="button" class="btn btn-default" id="open-device"><a href="/pulsecollect/open">开启设备</a></button>-->
+		<!--<button type="button" class="btn btn-primary" id="close-device"><a href="/pulsecollect/close">停止设备</a></button>-->
+		<button type="button" class="btn btn-default" id="start-sample" disabled><a href="/pulsecollect/start">开始采样</a></button>
+		<button type="button" class="btn btn-primary" id="stop-sample"><a href="/pulsecollect/stop">停止采样</a></button>
+		<div>
+			<button class="btn btn-primary btn-load" type="submit"><span class="glyphicon glyphicon-upload"></span>上传</button>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var dps = []; // dataPoints
+		var chart = new CanvasJS.Chart("chartContainer",{
+			title :{
+				text: "脉搏波信号"
+			},
+			data: [{
+				type: "line",
+				dataPoints: dps
+			}]
+		});
+		var xVal = 0;
+		var yVal = 100;
+		var updateInterval = 100;
+		var dataLength = 500; // number of dataPoints visible at any point
+
+		var updateChart = function (count) {
+			count = count || 1;
+			for (var j = 0; j < count; j++) {
+				yVal = yVal +  Math.round(5 + Math.random() *(-5-5));
+				dps.push({
+					x: xVal,
+					y: yVal
+				});
+				xVal++;
+			}
+			if (dps.length > dataLength)
+			{
+				dps.shift();
+			}
+			chart.render();
+		};
+		updateChart(dataLength);
+		setInterval(function(){updateChart()}, updateInterval);
+	});
+
+</script>
+<%- include footer %>

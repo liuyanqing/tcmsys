@@ -4,10 +4,38 @@ $(document).ready(function(){
         radioClass: 'iradio_square-blue',
         increaseArea: '20%' 
     });
-
 	hideAlert();
+	// Dropdown Menu
+	var dropdown = document.querySelectorAll('.dropdown');
+	var dropdownArray = Array.prototype.slice.call(dropdown,0);
+
+	dropdownArray.forEach(function(el){
+		var button = el.querySelector('a[data-toggle="dropdown"]'),
+			menu = el.querySelector('.dropdown-side-menu'),
+			arrow = button.querySelector('i.icon-arrow');
+
+		button.onclick = function(event) {
+			if(!menu.hasClass('show')) {
+				menu.classList.add('show');
+				menu.classList.remove('hide');
+				arrow.classList.add('open');
+				arrow.classList.remove('close');
+				event.preventDefault();
+			}
+			else {
+				menu.classList.remove('show');
+				menu.classList.add('hide');
+				arrow.classList.remove('open');
+				arrow.classList.add('close');
+				event.preventDefault();
+			}
+		};
+	});
+	Element.prototype.hasClass = function(className) {
+		return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
+	};
 $(".btn-save").on("click",function () {
-	var tizhi = [];
+	var tizhi = [0,0,0,0,0,0,0,0,0];
 	var Ascore = Number($("input[name='Ascore1']:checked").val()) + Number($("input[name='Ascore2']:checked").val()) + Number($("input[name='Ascore3']:checked").val()) + Number($("input[name='Ascore4']:checked").val()) + Number($("input[name='Ascore5']:checked").val()) + Number($("input[name='Ascore6']:checked").val()) + Number($("input[name='Ascore7']:checked").val()) + Number($("input[name='Ascore8']:checked").val());
 	var Bscore = Number($("input[name='Bscore1']:checked").val()) + Number($("input[name='Bscore2']:checked").val()) + Number($("input[name='Bscore3']:checked").val()) + Number($("input[name='Bscore4']:checked").val()) + Number($("input[name='Bscore5']:checked").val()) + Number($("input[name='Bscore6']:checked").val()) + Number($("input[name='Bscore7']:checked").val()) + Number($("input[name='Bscore8']:checked").val());
 	var Cscore = Number($("input[name='Cscore1']:checked").val()) + Number($("input[name='Cscore2']:checked").val()) + Number($("input[name='Cscore3']:checked").val()) + Number($("input[name='Cscore4']:checked").val()) + Number($("input[name='Cscore5']:checked").val()) + Number($("input[name='Cscore6']:checked").val()) + Number($("input[name='Cscore7']:checked").val());
@@ -37,14 +65,14 @@ $(".btn-save").on("click",function () {
 	$("#Hscore").val(Hscore);
 	$("#Iscore").val(Iscore);
 	for(var i=0;i<8;i++){
-		if(type[i]>40){
+		if(type[i]>30){
 			tizhi[i] = "1";
 		}else {
 			tizhi[i] = "0";
 		}
 	}
-	if(tizhi.length == 0){
-		tizhi[8] = "A";
+	if(Ascore>=60){
+		tizhi[8] = "1";
 	}
 	$("#result").val(tizhi);
     });
@@ -95,35 +123,6 @@ $(".btn-save").on("click",function () {
 //	setInterval(function(){updateChart()}, updateInterval);
 //}
 
-// Dropdown Menu
-var dropdown = document.querySelectorAll('.dropdown');
-var dropdownArray = Array.prototype.slice.call(dropdown,0);
-
-dropdownArray.forEach(function(el){
-	var button = el.querySelector('a[data-toggle="dropdown"]'),
-		menu = el.querySelector('.dropdown-side-menu'),
-		arrow = button.querySelector('i.icon-arrow');
-
-	button.onclick = function(event) {
-		if(!menu.hasClass('show')) {
-			menu.classList.add('show');
-			menu.classList.remove('hide');
-			arrow.classList.add('open');
-			arrow.classList.remove('close');
-			event.preventDefault();
-		}
-		else {
-			menu.classList.remove('show');
-			menu.classList.add('hide');
-			arrow.classList.remove('open');
-			arrow.classList.add('close');
-			event.preventDefault();
-		}
-	};
-});
-Element.prototype.hasClass = function(className) {
-	return this.className && new RegExp("(^|\\s)" + className + "(\\s|$)").test(this.className);
-};
 var where = new Array(35);
 function comefrom(loca,locacity)
 {
@@ -215,6 +214,5 @@ function init()
 }
 // alert hide
 function hideAlert(){
-	//$(".alert-success").fadeIn(2000);
 	$(".alert-success").fadeOut(2000);
 }

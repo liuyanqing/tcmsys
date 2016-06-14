@@ -10,7 +10,7 @@
 <h4>中医体质辨识问卷 第三步：填写个人体质情况（共4步）（共三步）</h4>
 <form class="question2-form" method="POST" name="question1">
 <input type="hidden" name="name" value="<%= user.name %>"/>	
-<% for(i = 0; i < questionthree.tizhi.length; i++){ %>
+<% for(var i = 0; i < questionthree.tizhi.length; i++){ %>
 	<% if(questionthree.tizhi[i] == "A"){ %>
 	<%- include question4-A %>
 	<% }%>	

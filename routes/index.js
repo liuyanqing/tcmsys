@@ -5,9 +5,11 @@ var crypto = require('crypto'),
     Questiontwo = require('../models/question2.js'),
     Questionthree = require('../models/question3.js'),
     Questionfour = require('../models/question4.js'),
-    Score = require('../models/score-result.js');
+    PulseController = require('../models/Pulse_Sample.js'),
+    pulseController = new PulseController(),
+    start_flag = 0;
 
-module.exports = function(app) {
+ module.exports = function(app) {
   app.get('/', checkLogin);
   app.get('/', function (req, res) {
       res.render('index', {
@@ -73,6 +75,7 @@ module.exports = function(app) {
       error: req.flash('error').toString()
     }); 
   });
+
   app.post('/login', checkNotLogin);
   app.post('/login', function (req, res) {
     //生成密码的 md5 值
@@ -343,73 +346,16 @@ module.exports = function(app) {
         if(!questionfour){
           var questionfour = new Questionfour({
             name: req.body.name,
-            Ascore1 : req.body.Ascore1,
-            Ascore2 : req.body.Ascore2,
-            Ascore3 : req.body.Ascore3,
-            Ascore4 : req.body.Ascore4,
-            Ascore5 : req.body.Ascore5,
-            Ascore6 : req.body.Ascore6,
-            Ascore7 : req.body.Ascore7,
-            Ascore8 : req.body.Ascore8,
-            Bscore1 : req.body.Bscore1,
-            Bscore2 : req.body.Bscore2,
-            Bscore3 : req.body.Bscore3,
-            Bscore4 : req.body.Bscore4,
-            Bscore5 : req.body.Bscore5,
-            Bscore6 : req.body.Bscore6,
-            Bscore7 : req.body.Bscore7,
-            Bscore8 : req.body.Bscore8,
-            Cscore1 : req.body.Cscore1,
-            Cscore2 : req.body.Cscore2,
-            Cscore3 : req.body.Cscore3,
-            Cscore4 : req.body.Cscore4,
-            Cscore5 : req.body.Cscore5,
-            Cscore6 : req.body.Cscore6,
-            Cscore7 : req.body.Cscore7,
-            Dscore1 : req.body.Dscore1,
-            Dscore2 : req.body.Dscore2,
-            Dscore3 : req.body.Dscore3,
-            Dscore4 : req.body.Dscore4,
-            Dscore5 : req.body.Dscore5,
-            Dscore6 : req.body.Dscore6,
-            Dscore7 : req.body.Dscore7,
-            Dscore8 : req.body.Dscore8,
-            Escore1 : req.body.Escore1,
-            Escore2 : req.body.Escore2,
-            Escore3 : req.body.Escore3,
-            Escore4 : req.body.Escore4,
-            Escore5 : req.body.Escore5,
-            Escore6 : req.body.Escore6,
-            Escore7 : req.body.Escore7,
-            Escore8 : req.body.Escore8,
-            Fscore1 : req.body.Fscore1,
-            Fscore2 : req.body.Fscore2,
-            Fscore3 : req.body.Fscore3,
-            Fscore4 : req.body.Fscore4,
-            Fscore5 : req.body.Fscore5,
-            Fscore6 : req.body.Fscore6,
-            Gscore1 : req.body.Gscore1,
-            Gscore2 : req.body.Gscore2,
-            Gscore3 : req.body.Gscore3,
-            Gscore4 : req.body.Gscore4,
-            Gscore5 : req.body.Gscore5,
-            Gscore6 : req.body.Gscore6,
-            Gscore7 : req.body.Gscore7,
-            Gscore8 : req.body.Gscore8,
-            Hscore1 : req.body.Hscore1,
-            Hscore2 : req.body.Hscore2,
-            Hscore3 : req.body.Hscore3,
-            Hscore4 : req.body.Hscore4,
-            Hscore5 : req.body.Hscore5,
-            Hscore6 : req.body.Hscore6,
-            Hscore7 : req.body.Hscore7,
-            Iscore1 : req.body.Iscore1,
-            Iscore2 : req.body.Iscore2,
-            Iscore3 : req.body.Iscore3,
-            Iscore4 : req.body.Iscore4,
-            Iscore5 : req.body.Iscore5,
-            Iscore6 : req.body.Iscore6,
-            Iscore7 : req.body.Iscore7
+            Ascore : req.body.Ascore,
+            Bscore : req.body.Bscore,
+            Cscore : req.body.Cscore,
+            Dscore : req.body.Dscore,
+            Escore : req.body.Escore,
+            Fscore : req.body.Fscore,
+            Gscore : req.body.Gscore,
+            Hscore : req.body.Hscore,
+            Iscore : req.body.Iscore,
+            result : req.body.result
             });
           questionfour.save(function (err) {
           if (err) {
@@ -422,73 +368,16 @@ module.exports = function(app) {
       }else{
         var questionfour = new Questionfour({
             name: req.body.name,
-            Ascore1 : req.body.Ascore1,
-            Ascore2 : req.body.Ascore2,
-            Ascore3 : req.body.Ascore3,
-            Ascore4 : req.body.Ascore4,
-            Ascore5 : req.body.Ascore5,
-            Ascore6 : req.body.Ascore6,
-            Ascore7 : req.body.Ascore7,
-            Ascore8 : req.body.Ascore8,
-            Bscore1 : req.body.Bscore1,
-            Bscore2 : req.body.Bscore2,
-            Bscore3 : req.body.Bscore3,
-            Bscore4 : req.body.Bscore4,
-            Bscore5 : req.body.Bscore5,
-            Bscore6 : req.body.Bscore6,
-            Bscore7 : req.body.Bscore7,
-            Bscore8 : req.body.Bscore8,
-            Cscore1 : req.body.Cscore1,
-            Cscore2 : req.body.Cscore2,
-            Cscore3 : req.body.Cscore3,
-            Cscore4 : req.body.Cscore4,
-            Cscore5 : req.body.Cscore5,
-            Cscore6 : req.body.Cscore6,
-            Cscore7 : req.body.Cscore7,
-            Dscore1 : req.body.Dscore1,
-            Dscore2 : req.body.Dscore2,
-            Dscore3 : req.body.Dscore3,
-            Dscore4 : req.body.Dscore4,
-            Dscore5 : req.body.Dscore5,
-            Dscore6 : req.body.Dscore6,
-            Dscore7 : req.body.Dscore7,
-            Dscore8 : req.body.Dscore8,
-            Escore1 : req.body.Escore1,
-            Escore2 : req.body.Escore2,
-            Escore3 : req.body.Escore3,
-            Escore4 : req.body.Escore4,
-            Escore5 : req.body.Escore5,
-            Escore6 : req.body.Escore6,
-            Escore7 : req.body.Escore7,
-            Escore8 : req.body.Escore8,
-            Fscore1 : req.body.Fscore1,
-            Fscore2 : req.body.Fscore2,
-            Fscore3 : req.body.Fscore3,
-            Fscore4 : req.body.Fscore4,
-            Fscore5 : req.body.Fscore5,
-            Fscore6 : req.body.Fscore6,
-            Gscore1 : req.body.Gscore1,
-            Gscore2 : req.body.Gscore2,
-            Gscore3 : req.body.Gscore3,
-            Gscore4 : req.body.Gscore4,
-            Gscore5 : req.body.Gscore5,
-            Gscore6 : req.body.Gscore6,
-            Gscore7 : req.body.Gscore7,
-            Gscore8 : req.body.Gscore8,
-            Hscore1 : req.body.Hscore1,
-            Hscore2 : req.body.Hscore2,
-            Hscore3 : req.body.Hscore3,
-            Hscore4 : req.body.Hscore4,
-            Hscore5 : req.body.Hscore5,
-            Hscore6 : req.body.Hscore6,
-            Hscore7 : req.body.Hscore7,
-            Iscore1 : req.body.Iscore1,
-            Iscore2 : req.body.Iscore2,
-            Iscore3 : req.body.Iscore3,
-            Iscore4 : req.body.Iscore4,
-            Iscore5 : req.body.Iscore5,
-            Iscore6 : req.body.Iscore6,
-            Iscore7 : req.body.Iscore7
+            Ascore : req.body.Ascore,
+            Bscore : req.body.Bscore,
+            Cscore : req.body.Cscore,
+            Dscore : req.body.Dscore,
+            Escore : req.body.Escore,
+            Fscore : req.body.Fscore,
+            Gscore : req.body.Gscore,
+            Hscore : req.body.Hscore,
+            Iscore : req.body.Iscore,
+            result : req.body.result
             });
           Questionfour.update(req.body.name,questionfour,function(err){
           if (err) {
@@ -536,6 +425,33 @@ module.exports = function(app) {
         });
     });
 
+     app.get('/pulsecollect/start', function (req, res) {
+         pulseController.cmd("open");
+         pulseController.cmd("start");
+         start_flag = 1;
+         var T = 10;
+         setInterval(function(){
+             if(start_flag){
+                 console.log("%d",pulseController.getData());
+             }
+         }, T);
+         req.flash('success', '开始采样');
+         res.render('pulsecollect-start', {
+             title: '脉搏信号采集|中医体质辨识系统',
+             user: req.session.user,
+             success: req.flash('success').toString(),
+             error: req.flash('error').toString()
+         });
+     });
+
+     app.get('/pulsecollect/stop', function (req, res) {
+         start_flag = 0;
+         pulseController.cmd("stop");
+         pulseController.cmd("close");
+         req.flash('success', '停止采样');
+         res.redirect('/pulsecollect');
+     });
+
     app.get('/imagecollect', checkLogin);
     app.get('/imagecollect', function (req, res) {
         res.render('imagecollect', {
@@ -548,13 +464,28 @@ module.exports = function(app) {
 
 
   app.get('/useradmin', checkLogin);
+  app.get('/useradmin', checkAdmin);
   app.get('/useradmin', function (req, res) {
-    res.render('useradmin', {
-      title: '用户管理|中医体质辨识系统',
-      user: req.session.user,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
-    });
+      Questionfour.get(req.session.user.name, function (err, questionfour) {
+          if(!questionfour){
+              req.flash('err', '没有进行体质测试');
+              res.redirect('/question4');
+          }
+          Questionone.getAll(function (err, questionone) {
+              if(!questionone){
+                  req.flash('err', err);
+                  res.redirect('/');
+              }
+              res.render('useradmin', {
+                  title: '用户管理|中医体质辨识系统',
+                  user: req.session.user,
+                  questionone: questionone,
+                  questionfour: questionfour,
+                  success: req.flash('success').toString(),
+                  error: req.flash('error').toString()
+              });
+          });
+      });
   });
 
   app.get('/help', function (req, res) {
@@ -581,4 +512,11 @@ module.exports = function(app) {
     }
     next();
   }
-}
+     function checkAdmin(req, res, next) {
+         if (req.session.user.name != "admin") {
+             req.flash('error', '不是系统管理员!');
+             return res.redirect('/login');
+         }
+         next();
+     }
+};
