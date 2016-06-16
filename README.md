@@ -1,4 +1,4 @@
-<h1>tcmsys</h1>
+<h1>tcmsys（中医体质辨识系统）</h1>
 <ul>
 <li><h3>1、安装node.js，注意环境变量的配置</h3></li>
 <li><h3>2、安装npm</h3></li>
